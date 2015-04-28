@@ -28,7 +28,6 @@ ru:
       person:
         name: Имя
         origin_name: Имя (в оригинале)
-        sex: Пол
         birthday: Дата рождения
         avatar: Фото
         films: Фильмы

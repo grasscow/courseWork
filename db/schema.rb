@@ -59,14 +59,13 @@ ActiveRecord::Schema.define(version: 20150428130455) do
   create_table "people", force: :cascade do |t|
     t.string   "name"
     t.string   "origin_name"
-    t.string   "sex",                 limit: 1
     t.date     "birthday"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "users", force: :cascade do |t|

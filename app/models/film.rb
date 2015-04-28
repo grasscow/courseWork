@@ -1,9 +1,13 @@
 class Film < ActiveRecord::Base
+  has_attached_file :cover, styles: {medium: "250x250>", thumb: "100x100>"}
+
   belongs_to :country
   belongs_to :genre
   belongs_to :director, class_name: 'Person'
 
+
   has_and_belongs_to_many :people, -> { order(:name) }
+
 
   validates :name, presence: true
   validates :country, presence: true
@@ -12,6 +16,7 @@ class Film < ActiveRecord::Base
   validates :length, numericality: {only_integer: true, greater_than: 0}, allow_blank: true
   validates :year, numericality: {only_integer: true, greater_than: 1885}, allow_blank: true
   validate :check_people
+  validates_attachment :cover, content_type: {content_type: /\Aimage\/.*\z/}
 
 
   scope :ordering, -> { order(:year, :name) }

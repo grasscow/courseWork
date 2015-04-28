@@ -3,7 +3,6 @@ class Person < ActiveRecord::Base
 
 
   validates :name, presence: true
-  validates :sex, inclusion: {in: %w(м ж)}, presence: true
   validate :check_birthday
   validates_attachment :avatar, content_type: {content_type: /\Aimage\/.*\z/}
 
@@ -15,7 +14,7 @@ class Person < ActiveRecord::Base
 
   private
   def check_birthday
-    errors.add(:birthday, :invalid) if year && year>Date.today.year
+    errors.add(:birthday, :invalid) if birthday && birthday>Date.today
     true
   end
 end

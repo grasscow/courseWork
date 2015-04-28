@@ -3,7 +3,6 @@ class CreatePeople < ActiveRecord::Migration
     create_table :people do |t|
       t.string :name
       t.string :origin_name
-      t.string :sex, limit: 1
       t.date :birthday
       t.attachment :avatar
 
