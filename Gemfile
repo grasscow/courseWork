@@ -51,10 +51,9 @@ gem 'rails-i18n'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'httparty'
-
-# Use ActiveModel has_secure_password
 gem 'bcrypt'
 gem 'mechanize'
+gem 'ru_propisju'
 
 # Use unicorn as the app server
 # gem 'unicorn'

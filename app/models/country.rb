@@ -3,6 +3,8 @@ class Country < ActiveRecord::Base
 
   scope :ordering, -> { order(:name) }
 
+  before_destroy :can_destroy?
+
 
   def self.manage?(u)
     u.try(:admin?)
