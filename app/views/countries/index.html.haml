@@ -1,21 +1,11 @@
-%h1 Listing countries
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th
-      %th
-      %th
-
-  %tbody
-    - @countries.each do |country|
-      %tr
-        %td= country.name
-        %td= link_to 'Show', country
-        %td= link_to 'Edit', edit_country_path(country)
-        %td= link_to 'Destroy', country, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Country', new_country_path
+.page-header
+  %h1 Страны
+-if Country.manage?(@current_user)
+  .btn-toolbar
+    =link_to new_country_path, class: 'btn btn-primary' do
+      =fa_icon 'plus'
+      Добавить
+.list-group
+  -@countries.each do |country|
+    =link_to country.name,country, class: 'list-group-item'
+=paginate @countries
