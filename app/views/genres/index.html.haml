@@ -1,0 +1,9 @@
+.page-header
+  %h1 Жанры
+
+.list-group
+  -@genres.each do |genre|
+    =link_to genre, class: 'list-group-item' do
+      =genre.name
+
+=paginate @genres

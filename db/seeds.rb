@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+#Страны
+countries=HTTParty.get 'http://api.vk.com/method/database.getCountries?v=5.21&need_all=1&count=500'
+countries['response']['items'].each do |attrs|
+Country.create!(name: attrs['title'])
+end
+
+#Жанры
+genre_names=%w(Боевик Вестерн Детектив Драма Комедия Мелодрама Мистика Приключения Триллер Ужастик Фантастика Фэнтези)
+genre_names.each{|name| Genre.create!(name: name)}
+
+#Создание администратора
+login=`whoami`.strip
+email="#{login}@mail.msiu.ru"
+password=login*2
+User.create!(name: login, email: email, password: password,password_confirmation: password, role: 1)

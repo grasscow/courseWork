@@ -10,6 +10,10 @@ ru:
   activerecord:
     models:
       user: Пользователь
+      genre: Жанр
+      country: Страна
+      person: Персона
+      film: Фильм
     attributes:
       user:
         name: Имя
@@ -17,7 +21,42 @@ ru:
         password: Пароль
         password_confirmation: Пароль (повторно)
         role: Роль
+      genre:
+        name: Название
+      country:
+        name: Название
+      person:
+        name: Имя
+        origin_name: Имя (в оригинале)
+        sex: Пол
+        birthday: Дата рождения
+        avatar: Фото
+        films: Фильмы
+        produced_films: Отрежисс
+      film:
+        name: Название
+        origin_name: Название (в оригинале)
+        slogan: Девиз
+        country: Страна
+        country_id: Страна
+        genre: Жанр
+        genre_id: Жанр
+        director: Режиссер
+        director_id: Режиссер
+        length: Продолжительность
+        year: Год выпуска
+        trailer_url: Адрес трейлера на YouTube
+        cover: Постер
+        description: Описание
+        people: Актеры
 
-  users:
-    index:
-      title: Регистрация
+
+
+
+  views:
+    pagination:
+      first: ⇤
+      last: ⇥
+      previous: ←
+      next: →
+      truncate: …

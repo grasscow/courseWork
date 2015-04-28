@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 
   before_validation :set_default_role
 
+  scope :ordering,->{order(:name)}
+
   def set_default_role
     self.role||=0
   end
@@ -21,5 +23,14 @@ class User < ActiveRecord::Base
   def role_name
     role && @@roles[role]
   end
+
+  def force_authenticate!(controller)
+    controller.session[:user_id]=id
+  end
+
+  def admin?
+    role==1
+  end
+
 
 end

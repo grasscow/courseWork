@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @film.name
+%p
+  %b Origin name:
+  = @film.origin_name
+%p
+  %b Slogan:
+  = @film.slogan
+%p
+  %b Country:
+  = @film.country
+%p
+  %b Genre:
+  = @film.genre
+%p
+  %b Director:
+  = @film.director
+%p
+  %b Length:
+  = @film.length
+%p
+  %b Year:
+  = @film.year
+%p
+  %b Trailer url:
+  = @film.trailer_url
+%p
+  %b Cover:
+  = @film.cover
+%p
+  %b Description:
+  = @film.description
+
+= link_to 'Edit', edit_film_path(@film)
+\|
+= link_to 'Back', films_path

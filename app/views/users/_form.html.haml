@@ -12,5 +12,9 @@
   .form-group
     = f.label :password_confirmation
     = f.password_field :password_confirmation, class: 'form-control'
+  -if @current_user.try(:admin?)
+    .form-group
+      =f.label :role
+      =f.select :role, User.roles.map.with_index{|name,i| [name,i]}, {},class: 'form-control'
   .actions
     = f.submit nil, class: 'btn btn-primary'
