@@ -4,8 +4,6 @@ class Film < ActiveRecord::Base
   belongs_to :country
   belongs_to :genre
   belongs_to :director, class_name: 'Person'
-
-
   has_and_belongs_to_many :people, -> { order(:name) }
 
 
@@ -20,6 +18,19 @@ class Film < ActiveRecord::Base
 
 
   scope :ordering, -> { order(:year, :name) }
+  scope :full, -> { includes(:country, :genre, :director, :people) }
+
+  attr_reader :person_tokens
+
+  def self.manage?(u)
+    u.try(:admin?)
+  end
+
+
+  def person_tokens=(val)
+    self.person_ids=val.split(',')
+  end
+
 
   private
   def check_people

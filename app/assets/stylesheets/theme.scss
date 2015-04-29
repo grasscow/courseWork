@@ -4,9 +4,8 @@ $font-size-base: 16px;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import "token-input-bootstrap";
 @import "fonts";
-
-
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: 300;
@@ -20,7 +19,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   @extend .alert-success;
 }
 
-.btn-toolbar{
+.btn-toolbar {
   padding: $padding-large-vertical 0;
 }
 

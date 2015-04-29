@@ -18,6 +18,8 @@
         =f.label :avatar
         =f.file_field :avatar
       -if @person.avatar?
-        .text-center=image_tag @person.avatar.url(:thumb), alt: Person.human_attribute_name(:avatar)
+        .text-center
+          =link_to @person.avatar.url do
+            =image_tag @person.avatar.url(:thumb), alt: Person.human_attribute_name(:avatar)
   .actions
     = f.submit nil, class: 'btn btn-primary'

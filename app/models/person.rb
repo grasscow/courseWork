@@ -12,6 +12,8 @@ class Person < ActiveRecord::Base
   scope :ordering, -> { (order(:name)) }
   scope :full, -> { includes(films: :genre, produced_films: :genre) }
 
+
+
   def self.manage?(u)
     u.try(:admin?)
   end
@@ -29,7 +31,11 @@ class Person < ActiveRecord::Base
   end
 
   def human_age(d=nil)
-    "#{age(d)} #{RuPropisju.choose_plural(age(d),'год','года','лет')}"
+    "#{age(d)} #{RuPropisju.choose_plural(age(d), 'год', 'года', 'лет')}"
+  end
+
+  def self.search(q)
+    ordering.where("upper(name) like upper(:q) or upper(origin_name) like upper(:q)", q: "%#{q}%")
   end
 
 

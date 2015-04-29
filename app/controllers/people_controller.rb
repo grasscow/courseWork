@@ -5,7 +5,17 @@ class PeopleController < ApplicationController
 
 
   def index
-    @people = Person.ordering.page(params[:page])
+    respond_to do |format|
+      format.html do
+        @people = Person.ordering.page(params[:page])
+      end
+      format.json do
+        @people = Person.search(params[:q]).all
+        render json: @people
+      end
+    end
+
+
   end
 
 
