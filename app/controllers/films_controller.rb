@@ -5,7 +5,7 @@ class FilmsController < ApplicationController
 
 
   def index
-    @films = Film.ordering.page(params[:page])
+    @films = Film.includes(:genre).ordering.page(params[:page])
   end
 
 

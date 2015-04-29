@@ -10,6 +10,7 @@ class GenresController < ApplicationController
 
 
   def show
+    @films=@genre.films.page(params[:page])
   end
 
 

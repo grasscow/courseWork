@@ -6,8 +6,8 @@ class Person < ActiveRecord::Base
   validate :check_birthday
   validates_attachment :avatar, content_type: {content_type: /\Aimage\/.*\z/}
 
-  has_and_belongs_to_many :films, -> { ordering }
-  has_many :produced_films, -> { ordering }, class_name: 'Film', foreign_key: :director_id
+  has_and_belongs_to_many :films, -> { ordering.includes(:genre) }
+  has_many :produced_films, -> { ordering.includes(:genre) }, class_name: 'Film', foreign_key: :director_id
 
   scope :ordering, -> { (order(:name)) }
   scope :full, -> { includes(films: :genre, produced_films: :genre) }

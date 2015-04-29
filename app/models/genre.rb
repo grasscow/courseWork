@@ -1,5 +1,5 @@
 class Genre < ActiveRecord::Base
-  has_many :films, -> { ordering }, dependent: :destroy
+  has_many :films, -> { ordering.includes(:genre) }, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 

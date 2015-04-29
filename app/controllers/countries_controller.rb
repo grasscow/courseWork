@@ -10,6 +10,7 @@ class CountriesController < ApplicationController
 
 
   def show
+    @films=@country.films.page(params[:page])
   end
 
 

@@ -1,5 +1,5 @@
 class Country < ActiveRecord::Base
-  has_many :films, -> { ordering }, dependent: :destroy
+  has_many :films, -> { ordering.includes(:genre) }, dependent: :destroy
 
   scope :ordering, -> { order(:name) }
 
