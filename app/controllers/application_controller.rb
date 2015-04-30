@@ -24,6 +24,11 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+  
+  def render_error(msg="Доступ запрещен")
+    flash[:danger]=msg
+    redirect_to root_path
+  end
 
 
 end
