@@ -26,7 +26,7 @@ class Person < ActiveRecord::Base
     d||=Date.today
     return unless birthday
     res=d.year-birthday.year
-    res-= 1 if Date.new(d.year, birthday.month, birthday.day) < d
+    res-= 1 if Date.new(d.year, birthday.month, birthday.day) > d
     res
   end
 
