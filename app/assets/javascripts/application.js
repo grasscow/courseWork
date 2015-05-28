@@ -16,4 +16,5 @@
 //= require bootstrap-sprockets
 //= require jquery.maskedinput.min
 //= require jquery.tokeninput
+//= require Chart
 //= require_tree .

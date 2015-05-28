@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  has_many :logs
+
   cattr_reader :roles
 
   @@roles=%w(Пользователь Администратор)

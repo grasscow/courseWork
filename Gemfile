@@ -55,6 +55,10 @@ gem 'bcrypt'
 gem 'mechanize'
 gem 'ru_propisju'
 
+gem 'chart-js-rails'
+gem 'bootstrap-datepicker-rails'
+
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

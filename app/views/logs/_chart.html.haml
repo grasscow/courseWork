@@ -1,0 +1,6 @@
+#canvasd
+
+= form_tag(load_chart_data_logs_path, { remote: true }) do
+  = text_field_tag :from, @from, { 'data-provide' => 'datepicker'}
+  = text_field_tag :til, @til, { 'data-provide' => 'datepicker'}
+  = submit_tag 'load'

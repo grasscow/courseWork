@@ -1,0 +1,18 @@
+data = {
+  labels : <%= @stats.map{|s| s.day.to_s}.to_json.html_safe %>,
+  datasets : [
+    {
+      fillColor : "rgba(220,220,220,0.5)",
+      strokeColor : "rgba(220,220,220,1)",
+      pointColor : "rgba(220,220,220,1)",
+      pointStrokeColor : "#fff",
+      data : <%= @stats.map{|s| s.visits}.inspect %>
+    }
+  ]
+};
+
+$("#canvasd").empty();
+$("#canvasd").append('<canvas id="canvas" style="width: 100%; heigth: 300px;"></canvas>');
+
+
+chart = new Chart($("#canvas").get(0).getContext("2d")).Line(data);
