@@ -17,4 +17,6 @@
 //= require jquery.maskedinput.min
 //= require jquery.tokeninput
 //= require Chart
+//= require bootstrap-datepicker
 //= require_tree .
+$('#sandbox-container .input-group.date').datepicker({language: "ru"});

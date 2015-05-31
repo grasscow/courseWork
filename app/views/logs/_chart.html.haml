@@ -1,6 +1,21 @@
-#canvasd
+%canvas#canvas{:height => "450", :width => "1000"}
+
+
 
 = form_tag(load_chart_data_logs_path, { remote: true }) do
-  = text_field_tag :from, @from, { 'data-provide' => 'datepicker'}
-  = text_field_tag :til, @til, { 'data-provide' => 'datepicker'}
-  = submit_tag 'load'
+  .input-group.date
+    = text_field_tag :from, @from, {class: "form-control"}
+    %span(class = "input-group-addon")
+      =fa_icon "calendar"
+      
+  .input-group.date
+    = text_field_tag :til, @til, {class: "form-control"}
+    %span(class = "input-group-addon")
+      =fa_icon "calendar"
+
+  = submit_tag 'Загрузить'
+
+:javascript
+  $('.input-group.date').datepicker({
+    language: "ru"
+  });

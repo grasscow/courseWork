@@ -12,7 +12,8 @@ data = {
 };
 
 $("#canvasd").empty();
-$("#canvasd").append('<canvas id="canvas" style="width: 100%; heigth: 300px;"></canvas>');
+$("#canvasd").append('<canvas id="canvas" style="width: 100%; heigth: 100%;"></canvas>');
+
 
 
 chart = new Chart($("#canvas").get(0).getContext("2d")).Line(data);
