@@ -8,7 +8,7 @@ class LogsController < ApplicationController
   end
 
   def load_chart_data
-    @stats = Log.day_statistics(uri: params[:uri], from: params[:from], til: params[:til])
+    @stats = Log.day_statistics(uri: params[:uri], from: Date.parse(params[:from]), til: Date.parse(params[:til]))
     respond_to do |format|
       format.js
     end

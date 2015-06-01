@@ -6,11 +6,15 @@ class Log < ActiveRecord::Base
   end
 
   def self.day_statistics(uri: nil, from: nil, til: nil)
-    query = self.select('strftime(\'%d.%m.%Y\', created_at) as day, count(*) as visits').group('day').order('day ASC').limit(100)#select strftime(\'%d/%m/%Y\', created_at)
-    query.where(uri: uri) if uri.present?
-    query.where("created_at >= ?", from) if from.present?
-    query.where("created_at <= ?", til) if til.present?
-    query
+    query = self.select( 'strftime(\'%d.%m.%Y\',created_at) as day, date(created_at) as h, count(*) as visits').group('h').order('h ASC').limit(100)#select strftime(\'%d/%m/%Y\', created_at)
+#    query = query.select('strftime(\'%d.%m.%Y\',created_at) as day, visits')
+# =>date(created_at) as day
+#    query = query.where(uri: uri) if uri.present?
+    query = query.where("created_at >= ?", from) if from.present?
+#    query = query.where("day >= ?", from) if from.present?
+    query = query.where("created_at <= ?", til) if til.present?
+#    query = query.where("day <= ?", til) if til.present?
+
   end
 
   def self.statistics_sessions
