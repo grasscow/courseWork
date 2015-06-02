@@ -2,7 +2,8 @@ class Log < ActiveRecord::Base
   belongs_to :user
 
   def self.page_statistics(uri: nil, from: nil, til: nil)
-    self.select('uri, count(*) as visits').group(:uri).order('visits DESC').limit(100)
+    query = self.select('uri, count(*) as visits').group(:uri).order('visits DESC').limit(100)
+    query = query.where("uri not like ?", "%logs%")
   end
 
   def self.day_statistics(uri: nil, from: nil, til: nil)
@@ -11,17 +12,18 @@ class Log < ActiveRecord::Base
 # =>date(created_at) as day
 #    query = query.where(uri: uri) if uri.present?
     query = query.where("uri not like ?", "%logs%")
-     # if from.present?
-     #   puts "fuuuuuuuuuuuuuuuuuuuu"
-     #   query = query.where("h >= ?", from)
-     # end
-#     if til.present?
+      if from.present?
+        puts "fuuuuuuuuuuuuuuuuuuuu"
+        query = query.where("h >= ?", from)
+      end
+      
+     if til.present?
 # #    query = query.where("day >= ?", from) if from.present?
-#     query = query.where("h <= ?", til)
-#     end
+     query = query.where("h <= ?", til)
+     end
 
 #    query = query.where("day <= ?", til) if til.present?
-
+    query
   end
 
   def self.statistics_sessions
