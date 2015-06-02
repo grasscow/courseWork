@@ -10,9 +10,16 @@ class Log < ActiveRecord::Base
 #    query = query.select('strftime(\'%d.%m.%Y\',created_at) as day, visits')
 # =>date(created_at) as day
 #    query = query.where(uri: uri) if uri.present?
-    query = query.where("created_at >= ?", from) if from.present?
-#    query = query.where("day >= ?", from) if from.present?
-    query = query.where("created_at <= ?", til) if til.present?
+    query = query.where("uri not like ?", "%logs%")
+     # if from.present?
+     #   puts "fuuuuuuuuuuuuuuuuuuuu"
+     #   query = query.where("h >= ?", from)
+     # end
+#     if til.present?
+# #    query = query.where("day >= ?", from) if from.present?
+#     query = query.where("h <= ?", til)
+#     end
+
 #    query = query.where("day <= ?", til) if til.present?
 
   end
