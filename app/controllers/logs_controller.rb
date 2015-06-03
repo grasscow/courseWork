@@ -5,6 +5,8 @@ class LogsController < ApplicationController
   # GET /logs.json
   def index
     @logs = Log.page_statistics
+    @min = @logs.last.visits
+    @max = @logs.first.visits
       
   end
 
@@ -20,6 +22,7 @@ class LogsController < ApplicationController
     respond_to do |format|
       format.js
     end
+
   end
 
   # GET /logs/1
