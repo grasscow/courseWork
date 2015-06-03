@@ -1,8 +1,9 @@
-%canvas#canvas{:height => "450", :width => "800"}
+#canvasd
+  %canvas#canvas{:height => "450", :width => "800"}
 
 
 
-= form_tag(load_chart_data_logs_path, { remote: true }) do
+= form_tag(load_chart_data_path, { remote: true }) do
   .input-group.date
     = text_field_tag :from, @from, {class: "form-control"}
     %span(class = "input-group-addon")
@@ -12,7 +13,7 @@
     = text_field_tag :til, @til, {class: "form-control"}
     %span(class = "input-group-addon")
       =fa_icon "calendar"
-
+  =hidden_field_tag :uri, @uri
   = submit_tag 'Загрузить'
 
 :javascript

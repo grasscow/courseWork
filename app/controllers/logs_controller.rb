@@ -1,5 +1,5 @@
 class LogsController < ApplicationController
-  before_action :set_log, only: [:show, :edit, :update, :destroy]
+ 
 
   # GET /logs
   # GET /logs.json
@@ -24,11 +24,10 @@ class LogsController < ApplicationController
   # GET /logs/1
   # GET /logs/1.json
   def show
+    @uri = params[:uri]
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_log
-      @log = Log.find(params[:id])
-    end
+
 end

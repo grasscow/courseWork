@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :logs do
-    get :load_chart_data, on: :collection
-    post :load_chart_data, on: :collection
-    get :load_chart_data, on: :member
-    post :load_chart_data, on: :member
-  end
+  
+  get 'logs', to: 'logs#index'
+  get 'logs/show/:uri', to: 'logs#show', as: :show_log
+  get 'logs/load_chart_data', to: 'logs#load_chart_data', as: :load_chart_data
+  post 'logs/load_chart_data', to: 'logs#load_chart_data', as: :load_chart_data_post
+  
   resources :films
   resources :people
   resources :countries
