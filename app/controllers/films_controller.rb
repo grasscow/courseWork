@@ -10,6 +10,7 @@ class FilmsController < ApplicationController
 
 
   def show
+    @uri = request.fullpath
   end
 
   def new

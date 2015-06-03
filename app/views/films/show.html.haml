@@ -15,6 +15,7 @@
   .col-md-3
     -if @film.cover?
       =image_tag @film.cover.url(:medium), alt: @film.name, class: 'img-responsive'
+      =link_to 'Show', show_log_path(@uri)
   .col-md-9
     -if @film.slogan.present?
       %blockquote

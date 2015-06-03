@@ -5,6 +5,7 @@ class LogsController < ApplicationController
   # GET /logs.json
   def index
     @logs = Log.page_statistics
+      
   end
 
   def load_chart_data
