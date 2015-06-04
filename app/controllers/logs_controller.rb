@@ -7,7 +7,9 @@ class LogsController < ApplicationController
     @logs = Log.page_statistics
     @min = @logs.last.visits
     @max = @logs.first.visits
-      
+    if !@current_user.try(:admin?)
+      redirect_to films_path, notice: 'НЕТ ДОСТУП К ЖУРНАЛАМ'
+    end
   end
 
   def load_chart_data
