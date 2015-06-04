@@ -6,15 +6,15 @@
 %table.table
   %thead
     %tr
-      %th Visits
+      %th Посещения
       %th Uri
-      %th graph
+      %th Процентное соотношение
       %th
 
 
   %tbody
     - @logs.each do |log|
-      - percent = ((log.visits - @min).to_f / (@max - @min) )* 100.0
+      - percent = ((log.visits).to_f / @max )* 100.0
       %tr
         %td= log.visits
         %td= link_to log.uri, log.uri
