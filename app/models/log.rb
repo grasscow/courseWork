@@ -27,6 +27,10 @@ class Log < ActiveRecord::Base
       query = query.having("uri like ?", uri)
 
   end
+  def self.table(uri)
+    query = self.select('users.email, count(*) as visits, date(logs.created_at) as day').joins(:user).group('users.email, day')
+    query = query.where(uri: uri).order('day DESC, visits DESC')
+  end
 
   def self.statistics_sessions
   	self.select('uri, count(*) as visits').group(:uri, :user_id, :session_id).order('visits DESC').limit(100)

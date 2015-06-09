@@ -31,6 +31,9 @@ class LogsController < ApplicationController
   # GET /logs/1.json
   def show
     @uri = params[:uri]
+    @visitors = Log.select('users.email, date(logs.created_at)').where(uri: params[:uri]).joins(:user).order('"date(logs.created_at)" DESC')
+
+    @visitors = @visitors.page(params[:page]).per(1)
   end
 
   private

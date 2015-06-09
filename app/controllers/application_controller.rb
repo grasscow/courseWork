@@ -8,13 +8,17 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def log
-    return if @current_user.present? && @current_user.try(:admin?)
-    Log.create(user_id: @current_user, session_id: session[:session_id], uri: request.fullpath, params: params.to_json)
-  end
+
 
   def set_current_user
     @current_user=User.find(session[:user_id]) if session[:user_id].present?
+  end
+
+  def log
+
+    return if @current_user.present? && @current_user.try(:admin?)
+
+    Log.create(user: @current_user, session_id: session[:session_id], uri: request.fullpath, params: params.to_json)
   end
 
   def check_authentication

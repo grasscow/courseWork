@@ -1,0 +1,14 @@
+%table.table
+  %thead
+    %tr
+      %th Email
+      %th Дата
+
+  %tbody
+    - @visitors.each do |visitor|
+      %tr
+        %td= visitor.email
+        %td= visitor['date(logs.created_at)']
+
+= paginate @visitors
+=@visitors.total_count
